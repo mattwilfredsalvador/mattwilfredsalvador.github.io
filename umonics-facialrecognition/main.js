@@ -171,7 +171,7 @@ function loadLabeledImages(){
     labels.map(async (label) => {
       const descriptions = []
       for (let i=1; i<=5; i++) {
-        const reference = await faceapi.fetchImage(`students/${label}/${i}.png`)
+        const reference = await faceapi.fetchImage(`/umonics-facialrecognition/students/${label}/${i}.png`)
         const referenceFaces = await faceapi.detectSingleFace(reference).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(referenceFaces.descriptor)
       }
