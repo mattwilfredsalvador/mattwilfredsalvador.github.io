@@ -27,6 +27,8 @@ var reportTimer = null;
 
 var labels = [];
 
+labels.push("unknown")
+
 
 /**function Object(name){
   this.name = name
@@ -41,7 +43,9 @@ var labels = [];
 
 var students = new Array()
 
-students = [];
+students = [{ name: 'unknown', 
+n: 0, h: 0, sa: 0, a: 0, f: 0, d: 0, su: 0,
+stn: 0, sth: 0, stsa: 0, sta: 0, stf: 0, std: 0, stsu: 0, }];
 
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('models'),
