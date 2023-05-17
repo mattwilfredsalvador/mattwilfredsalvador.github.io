@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Facial Recognition Emotion</title>
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="east-section.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+  <script defer src="face-api.min.js"></script>
+  <script defer src="main.js"></script>
+  <script defer src="etc.js"></script>
+  <script defer src="user.js"></script>
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+<body onload = "addNewCharacter()">
+
+  <div class="button-choices">
+    <table id="character-table">
+      <tr><td><button class="button-choice" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewFolder" id="button-choice-new" value="New Button"><img src="assets/images/plus-sign.jpg"></button></td></tr>
+      <tr><td><button class="button-choice" id="button-choice-mj" value="Teacher MJ" onclick="this.disabled=true;"><img src="students/Teacher MJ/3.png"><p>MJ</p></button></td></tr>
+      <tr><td><button class="button-choice" id="button-choice-josias" value="Josias" onclick="this.disabled=true;"><img src="students/Josias/1.png"><p>Josias</p></button></td></tr>
+      <tr><td><button class="button-choice" id="button-choice-reina" value="Reina" onclick="this.disabled=true;"><img src="students/Reina/1.png"><p>Reina</p></button></td></tr>
+      <tr><td><button class="button-choice" id="button-choice-alex" value="Alex" onclick="this.disabled=true;"><img src="students/Alex/1.png"><p>Alex</p></button></td></tr>
+      <tr><td><button class="button-choice" id="button-choice-sam" value="Sam" onclick="this.disabled=true;"><img src="students/Sam/1.png"><p>Sam</p></button></td></tr>
+    </table>
+  </div>
+
+  <div id="screenshot"></div>
+
+  <div class="compass-div">
+    <div class="form-check form-check-inline">
+      <input class="radio-speed" class="form-check-input" type="radio" name="inlineRadioOptions" id="radio1" value="1" style="accent-color: rgb(177, 252, 177)">
+      <label class="form-check-label" for="inlineRadio1">1x</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="radio-speed" class="form-check-input" type="radio" name="inlineRadioOptions" id="radio2" value="2" style="accent-color: rgb(0, 186, 0)">
+      <label class="form-check-label" for="inlineRadio2">2x</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="radio-speed" class="form-check-input" type="radio" name="inlineRadioOptions" id="radio4" value="4" style="accent-color: rgb(255, 255, 16)">
+      <label class="form-check-label" for="inlineRadio3">4x</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="radio-speed" class="form-check-input" type="radio" name="inlineRadioOptions" id="radio8" value="8" style="accent-color: rgb(255, 126, 35)">
+      <label class="form-check-label" for="inlineRadio3">8x</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="radio-speed" class="form-check-input" type="radio" name="inlineRadioOptions" id="radio16" value="16" style="accent-color: rgb(253, 53, 53)">
+      <label class="form-check-label" for="inlineRadio3">16x</label>
+    </div>
+
+    <div class="radio-line">
+      <hr style="background-color: rgb(201, 201, 201); height: 1px; border: 0;">
+    </div>
+
+    <div class="radio-info">
+      <i><span id="radio-info-label"></span></i>
+    </div>
+  </div>
+
+  <div class="title">
+    <!--<p>Facial Recognition and Emotion Tracking System</p>-->
+  </div>
+
+  <div class="title-2" id="title-2" style="display: none">
+    <p>P L A Y G R O U N D S</p>
+  </div>
+
+  <!-- Modal for Step 1 - Adding New Folder -->
+<div class="modal fade" id="addNewFolder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add New Character Choice</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Add New Student</span>
+          <input id="code-name-tb" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="next-button" type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#addReferenceImages">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Step 2 - Adding Photos -->
+<div class="modal fade" id="addReferenceImages" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Step 2 - Edit the Javascript File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p>2. Copy and Paste the code below into the separate file <i>(etc.js)</i> in the directory.</p>
+        <textarea id="copyCode" style="width:100%"></textarea>
+        <button onclick="copyTextFromElement('copyCode')">Copy</button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="upload-div">
+    <input type="file" id="uploadbutton" accept="video/*" hidden>
+    <label for="uploadbutton" id="uploadbuttonlabel">START</label>
+  </div>
+
+  <div class="box">
+    <video class="video" id="video" width="720" height="560" preload="metadata" autoplay muted>
+      <source id="video-source">
+      <!--<source id="video-source">-->
+    </video>
+  </div>
+
+  
+
+  <!--<video id="video" width="720" height="560" preload="metadata" autoplay muted></video>-->
+
+  <div class="log-div" id="log-div" style="display: none">
+    <textarea id="logArea" style="display: none" rows="10" cols="10"></textarea>
+    
+    <textarea id="logArea2" style="display: none"></textarea>
+    <textarea id="summative-area" style="display: none"></textarea>
+    <textarea id="individual-area" style="display: none"></textarea>
+    <textarea id="one-min-area" style="display: none"></textarea>
+    <textarea id="fiveminutearea" style="display: none"></textarea>
+
+    <div class="button-box">
+      <button class="btn btn-outline-primary" class="report-buttons" id="summative-button">Sum</button>
+      <button class="btn btn-outline-warning" class="report-buttons" id="individual-button">Indiv</button>
+      <button class="btn btn-outline-success" class="report-buttons" id="one-min-button">1 Min</button>
+      <button class="btn btn-outline-info" class="report-buttons">5 Min</button>
+    </div>
+
+    <!--<textarea id="subtitles" rows="5" cols="70"></textarea>-->
+  </div>
+
+  <!--------------------------------------->
+
+  <section class="east-section">
+    <div class="east-section-div">
+      <div class="east-title"><h1>USER MANUAL</h1></div>
+
+      <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+        <a class="navbar-brand" href="#">Table of Contents</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#item-1">Overview</a>
+          <a class="nav-link" href="#item-2">Features</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-3 my-1" href="#item-1-1" style="text-indent: 20px">Main Features</a>
+            <a class="nav-link ms-3 my-1" href="#item-1-2" style="text-indent: 20px">Auxiliary Features</a>
+          </nav>
+          <a class="nav-link" href="#item-3">User Interface</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-3 my-1" href="#item-3-1" style="text-indent: 20px">Compass Layout</a>
+            <a class="nav-link ms-3 my-1" href="#item-3-2" style="text-indent: 20px">Areas / Sections</a>
+          </nav>
+          <a class="nav-link" href="#item-4">Installation</a>
+          <a class="nav-link" href="#item-5">How to Use</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-4 my-1" href="#item-5-1" style="text-indent: 20px">Creating New References</a>
+            <a class="nav-link ms-4 my-1" href="#item-5-2" style="text-indent: 20px">Rendering Videos</a>
+          </nav>
+          <a class="nav-link" href="#item-6">FAQs</a>
+          <a class="nav-link" href="#item-7">Team</a>
+        </nav>
+      </nav>
+      
+      <div class="east-content-div" data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+        <h4 id="item-1">Overview</h4>
+        <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="600" src="assets/images/introduction.png" style="margin-top: 15%">
+        <p>Facial recognition systems have become increasingly popular in recent years, with the ability to identify individuals based on their unique facial features. However, newer systems have advanced to the point where they can not only recognize faces but also track emotions. This technology uses advanced algorithms to analyze facial expressions and detect emotions such as happiness, sadness, anger, and surprise.</p>
+        <p>Facial recognition systems that can track emotions and recognize faces work by analyzing various facial features, including the distance between the eyes, the shape and size of the nose, mouth, and jawline, and other unique facial attributes. These features are extracted from a captured image and compared to a database of face templates to identify an individual.</p>
+        <p>In addition to recognizing faces, these systems also use advanced algorithms to analyze facial expressions and detect emotions. This involves identifying subtle changes in facial muscle movements and using machine learning algorithms to associate these movements with specific emotions.</p>
+        <p>Therefore, it is important that facial recognition systems are used ethically, with proper safeguards in place to protect individual privacy and prevent misuse of data. This includes ensuring that individuals are aware of when and how their data is being collected and used, and that appropriate measures are in place to prevent unauthorized access to or misuse of this data.</p>
+
+        <br><hr><br>
+
+        <h4 id="item-2"><br>Features</h4>
+
+          <p>The developers have successfully created a system with the following features:</p>
+          <h5 id="item-1-1">Main Features</h5>
+          <p><br>1.) Facial Recognition</p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/face-recog-example.png">
+          <p>The most important feature for the system as it allows the other features to work effectively. It tracks the faces on the frame by checking if the frame contains any landmarks that pertains to the human face, therefore detecting a (probably) person. Sensitivity of this sensor can be altered based on the user preferences, as it affects highly the probability of detecting a human face.</p>
+          <p>2.) Face Labelling</p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/labelling-example.png">
+          <p>The system is capable of recognizing faces using an external model that uses the concept of Euclidian distance, which is the mathematical distance among the key features of the face (eyes, nose, mouth). The API calculates the Euclidian distance frame by frame, and then cross reference it with the existing reference pictures of the characters registerecd in our model. </p>
+          <p>3.) Emotion Tracking</p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/recog-example.png">
+          <p>Another main feature is the ability of the system to recognize emotions with the help of the API. It loads a preloaded model with reference images and checks if the particular frame has a character showing an emotion. This is possible because of the trained model that comes with the API. Currently, the API can recognize 7 different emotions. </p>
+          <p>4.) Attendance and Report Generation </p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/reporting-example.png">
+          <p>After the rendering process, autogenerated reports will automatically be available for the user to choose. It can generate different reports that can easily help the user to analyze the video without watching it. Reports also contain the characters recognized in the video, which means this can also double as the attendance report for the classes rendered.</p>
+        
+          <h5 id="item-1-2"><br>Auxiliary Features</h5>
+          <p>The developers also created supplemental features to help the future users:</p>
+          <p>1.) Rendering Speed Setting</p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/speed-example.png">
+          <p>Located at the north area, this feature allows the user to change the rendering speed. This is especially useful when changing devices as the rendering process relies heavily on the computer. A better processor means it can handle a faster speed.</p>
+          <p>2.) Character Choices</p>
+          <img class="img-fluid d-block mb-3 mx-auto rounded-circle " alt="Card image cap" width="200" src="assets/images/character-choices-example.png">
+          <p>Located at the east area, this feature allows the user to select the participants that would only be recognized by the system. This would greatly improve the accuracy and the performance of the system.</p>
+          
+          <br><hr><br>
+
+          <div id="content-ui-div">
+            <h4 id="item-3">User Interface</h4>
+            <br><h5 id="item-3-1">The Compass Layout</h5>
+            <br><p>The system has been implemented witb a <strong>compass</strong> layout, which means that different functionalities are housed at different directions of the website.</p>
+            <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/compass.png">
+            <p> With a simple hover into the particular direction, the functional house will be displayed. This hover feature gives the layout a clean and sleek overall look, as functionalities will only be seen if the user needs it to be.</p><br>
+            <h5 id="item-3-2">Areas / Sections</h5>
+            <p>North Area</p>
+            <p>The north area houses the <i>speed rendering options</i>. This functionality allows the user to manually select the speed of the renderation process. Speeds are completely up to the user's preferences and device specs, as faster speeds require a more advanced computer specs in order for the process to be fully utilized.</p>
+            <br><p>East Area</p>
+            <p>The east area houses the <i>character choices section</i>. This functionality allows the user to select only the relevant people found in the video. This is to done to improve accuracy and lessen the computer load.</p>
+            <br><p>West Area</p>
+            <p>The west area houses the <i>user manual module</i>. This functionality gives the user the information needed all about the system. This is to make sure that future succeeding users can still understand the program.</p>
+            <br><p>South Area</p>
+            <p>The south area houses the <i>report generation section</i>. This functionality only shows in the <i>Playground</i> layout, which automatically displays after the video is fully rendered. This is to make sure that reports will not be generated prematurely.</p>
+          </div>
+
+          <br><hr><br>
+
+          <br><br><h4 id="item-4">Installation</h4>
+          <p>...</p>
+
+          <br><hr><br>
+          <br><h4 id="item-5">How to Use</h4><br>
+          <h5 id="item-5-1">Creating New References</h5>
+          <p>1.) Navigate to the root home folder to find the <i>students</i> folder. <br>Here you'll see the different people that can be recognized by the face labelling feature. Treat this is as your database.</p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/howto/students-folder.png">
+          <p>2.) Create a new <i>student</i> by creating a new folder. Make sure to name the folder with a unique name or label that you want for that particular student.</p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/howto/new-folder.png">
+          <p>3.) Now go and drop all the images of that person and drop it in his/her/their new folder. This will serve as the reference images. </p>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/howto/dropped-images.png">
+            <p>&nbsp&nbsp <i>- Reference images should be in <strong>.png</strong> format!
+            <br>&nbsp&nbsp - Make sure that these images will be labeled accordingly starting from 1. 
+            <br>&nbsp&nbsp - A good basis for the number of images is 5 or more. 
+            <br>&nbsp&nbsp - If possible, use the best possible reference image as your 1st reference image.</i></p>
+          <p>4.) Once dropped, crop your images so it would only show the face landmarks. It should clearly show the chin, sides of face, eyes, nose and mouth.</p><br>
+          <img class="img-fluid d-block mb-3 mx-auto " alt="Card image cap" width="400" src="assets/images/howto/cropping-images.png">
+          <p>Do this for every reference images for that person. Try to make the image as close to a square as possible.</p><br><br>
+
+          <p>Congratulations! You have successfully created a new reference person. Follow the steps above again to create a new one.</p>
+
+          <br><hr><br>
+          <br><br><h4 id="item-6">FAQs</h4>
+
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                  1) There is some inaccurate labelling of the person, why is that?
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                    The program's accuracy is about >90%, so inaccuracies can really occur. There are certain factors that can contribute to this inaccuracy:
+
+                    <br><br>a.) Quality of Video
+                    <br>This is the first factor that makes all the difference. Videos should be of (1) quality, (2) characters are near the camera, and (3) characters face landmarks are seen;
+                    <br><br>b.) Character Choices
+                    <br>To further help the program to improve its accuracy, make sure to only select the relevant characters that are present in the input video. This will increase not only the accuracy of the system, but also its rendering speed,
+                    as the system will only scan the reference images of the characters chosen.
+                    <br><br>c.) Quality and number of Reference images
+                    <br>For selecting the reference images, make sure that these images are of great quality. A good resolution base is 150x150, but the larger the better. Images should also be cropped to only show the facial region, as this will ensure that the system will not waste time trying to find the face.
+                    The number of reference images should also be taken into account, as the more reference images there is, the more accurate it is. Be careful on the number of images though, as this can make the system laggy especially at higher rendering speeds.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                  2) Why is my video taking a long time to get the results
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                  3) It doesn't seem to detect any emotion throughout the video recording, how do I fix this?
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                  4) How do I know if the processing of the emotion is finished?
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <br><hr><br>
+
+        <!-- MEET THE TEAM -->
+        <h4 id="item-7">Team</h4>
+
+        <div class="py-5 text-center text-info background-info">
+          <div class="container" style="margin-left: 12.5%;">
+
+            <div class="row" style="width: 60%; height: 200px; float: left; display: flex; align-items: center;" >
+              <div class="col-lg-7 col-md-9 p-7"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" alt="Card image cap" width="200" src="assets/images/devs/matt1.png">
+                <h4 style="color: black;" > <b>Matt Wilfred C. Salvador</b> </h4>
+                <p class="mb-0">Lead Developer / Full Stack Web Developer</p>
+              </div>
+            </div>
+
+            <div class="row" style="width: 60%; height: 200px; float: right; display: flex; align-items: center;">
+              <div class="col-lg-7 col-md-9 p-7"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/devs/alex.png" alt="Card image cap" width="200">
+                <h4 style="color: black;"> <b>Alexander Maralit</b> </h4>
+                <p class="mb-0" style="margin-left: 20%">Data Analyst</p>
+              </div>
+            </div>
+
+            <div class="row" style="width: 60%; height: 200px; float: left; display: flex; align-items: center;">
+              <div class="col-lg-7 col-md-9 p-7"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/devs/ben.png"  width="200">
+                <h4 style="color: black;"> <b>Ben Amiel Castanares</b> </h4>
+                <p class="mb-0">Python Developer</p>
+              </div>
+            </div>
+
+            <div class="row" style="width: 60%; height: 200px; float: right; display: flex; align-items: center;">
+              <div class="col-lg-7 col-md-9 p-7"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/devs/sir mark.png" width="200">
+                <h4 style="color: black;"> <b>Mark Erick Cabral</b> </h4>
+                <p class="mb-0" style="margin-left: 10%">Team Supervisor</p>
+              </div>
+            </div>
+
+          </div>
+        </div> 
+
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
