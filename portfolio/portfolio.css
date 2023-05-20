@@ -1,0 +1,63 @@
+img {
+    margin-left: 10%;
+    margin-top: 10%;
+    /* adjust the below to control the 3D effect */
+    height: 50vh;
+    --x: 10px;
+    --y: 20px;
+    transform: perspective(1000px) rotateX(var(--_a,40deg));
+    /* */
+    clip-path: polygon(       
+       var(--y)              var(--y),       
+       calc(100% - var(--y)) var(--y),       
+       calc(100% - var(--y)) calc(100% - var(--y)),       
+       calc(100% - var(--y) - var(--x)) var(--_c,100%),       
+       calc(var(--x) + var(--y))        var(--_c,100%),      
+       var(--y)        calc(100% - var(--y))       
+       );
+    outline: var(--y) solid rgba(0, 0, 0, 0.4);
+    outline-offset: calc(-1*var(--y));
+    padding: var(--y) var(--y) 0 var(--y);
+    transition: 1s;
+  }
+
+  #box1:hover img {
+    --_a: 0deg;
+    --_c: calc(100% - var(--y));
+  }
+
+  
+  /* the below is irrelevant to the 3D effect */
+  .box {
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+  }
+
+  #box2 img{
+    height: 60vh;
+  }
+
+  #box2{
+    top: 1%;
+  }
+
+  #box1{
+    height: 50vh;
+    z-index: 1;
+    top: 25%;
+    left: 12%;
+  }
+
+  #box1:hover h2{
+    transform: translateY(0%);
+    transition: .8s .2s;
+  }
+  
+  
+  @media (max-width: 900px) {
+    body {
+      grid-auto-flow: row;   
+    }
+  }

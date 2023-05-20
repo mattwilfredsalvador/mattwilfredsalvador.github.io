@@ -1,37 +1,39 @@
 @font-face {
     font-family: "Gochi";
-    src: url(/font/GochiHand-Regular.ttf);
+    src: url(font/GochiHand-Regular.ttf);
 }
 
 @font-face {
   font-family: "Bungee";
-  src: url(/font/Bungee-Regular.ttf);
+  src: url(font/Bungee-Regular.ttf);
 }
 
 @font-face {
   font-family: "Righteous";
-  src: url(/font/Righteous-Regular.ttf);
+  src: url(font/Righteous-Regular.ttf);
 }
 
 @font-face {
   font-family: "Mogra";
-  src: url(/font/Mogra-Regular.ttf);
+  src: url(font/Mogra-Regular.ttf);
 }
 
 @font-face {
   font-family: "Daruma";
-  src: url(/font/DarumadropOne-Regular.ttf);
+  src: url(font/DarumadropOne-Regular.ttf);
 }
 
-.text-container{
-	font-weight: 100;
-	margin-top: 30%;
+@font-face {
+	font-family: "Oswald";
+	src: url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
 }
 
-#landing-page-name{
-	font-family: "Gochi";
-	color: white;
-	text-transform: lowercase;
+section { 
+	text-align: center;
+}
+
+#section1{
+	background-color: black;
 }
 
 /** Code By Webdevtrick ( https://webdevtrick.com ) **/
@@ -173,12 +175,7 @@ nav li a {
 nav li a:hover {
 	background: #a0a0a0;
 }
-section { 
-	text-align: center;
-}
-#marbles{
-	height: 110%;
-}
+
 .text-container{
 	height: 10%;
 }
@@ -196,7 +193,7 @@ h3 {
 }
 #fp-nav ul li a span, 
 .fp-slidesNav ul li a span {
-	background: rgb(56, 56, 56);
+	background: rgb(161, 160, 160);
 	width: 8px;
 	height: 8px;
 	margin: -4px 0 0 -4px;
@@ -210,7 +207,7 @@ h3 {
 	margin: -8px 0 0 -8px;
 	background: transparent;
 	box-sizing: border-box;
-	border: 2px solid #212121;
+	border: 2px solid #8f8f8f;
 }
  
 @media screen and (max-width: 767px) {
@@ -244,3 +241,78 @@ h3 {
 		padding: 3px;
 	}
 }
+
+/** -------------- title -------------------**/
+
+@font-face {
+	src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
+	  format("woff2");
+	font-family: "Meta";
+	font-style: normal;
+	font-weight: normal;
+  }
+  
+  main {
+	transition: all 0.5s;
+	-webkit-text-stroke: 1px #bebebeac;
+	font-variation-settings: "wght" 900, "ital" 0;
+	font-size: 15rem;
+	text-align: left;
+	color: transparent;
+	font-family: "Meta", sans-serif;
+	text-shadow: 10px 10px 0px #5b5b5b1d;
+	cursor: pointer;
+	line-height: 80%;
+	letter-spacing: 10%;
+  }
+
+.title-2nd{
+	font-size: 15rem;
+}
+
+.title-1st{
+	font-size: 13rem;
+}
+
+.text-container{
+	font-weight: 100;
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	top: 60%;
+	left: 13%;
+	font-size: 16px;
+}
+
+#marbles{
+  min-height: 100vh;
+  max-width: 200%;
+  margin-top: -10%;
+  margin-left: 30%;
+}
+
+#landing-page-name{
+	font-family: "Gochi";
+	color: white;
+	text-transform: lowercase;
+}
+
+.name-title{
+	font-family: "Gruppo";
+	font-size: 4rem;
+	color: rgba(192, 192, 192, 0.832);
+	z-index: 1;
+	position: absolute;
+	top: 53.5%;
+	left: 13.5%;
+}
+
+@font-face {
+	font-family: "Gruppo";
+	src: url(font/Gruppo-Regular.ttf);
+  }
+
+
+  /** **/
+
+  
