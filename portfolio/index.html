@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--Code By Webdevtrick ( https://webdevtrick.com )-->
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Matt's Portfolio</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.css'>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
+</head>
+<body>
+ 
+<!--<header>
+  <div class="header-top clearfix">
+    <h1 class="l-left"><a href="#firstSection">LOGO</a></h1>
+    <a class="l-right toggle-menu" href="#">
+      <i></i>
+      <i></i>
+      <i></i>
+    </a>
+  </div>
+ 
+  <nav class="hide">
+    <ul id="menu">
+      <li data-menuanchor="firstSection">
+        <a href="#firstSection" title="First Section">First Section</a>
+      </li>
+      <li data-menuanchor="secondSection">
+        <a href="#secondSection" title="Second Section">Second Section</a>
+      </li>
+      <li data-menuanchor="thirdSection">
+        <a href="#thirdSection" title="Second Section">Third Section</a>
+      </li>
+      <li data-menuanchor="fourthSection">
+        <a href="#fourthSection" title="Fourth Section">Fourth Section</a>
+      </li>
+      <li data-menuanchor="fifthSection">
+        <a href="#fifthSection" title="First Slide">Fifth Section</a>
+      </li>
+    </ul>
+  </nav>
+</header>-->
+ 
+<div id="fullpage">
+  <section class="vertical-scrolling" id="marbles">
+    <div class="text-container">
+      <h1 id="landing-page-name">matt wilfred</h1>
+    </div>
+  </section>
+  <section class="vertical-scrolling">
+    <h2>#2</h2>
+    <h3>This is the second section</h3>
+  </section>
+  <section class="vertical-scrolling">
+    <h2>#3</h2>
+    <h3>This is the third section</h3>
+  </section>
+  <section class="vertical-scrolling">
+    <h2>#4</h2> 
+    <h3>This is the fourth section</h3>
+  </section>
+  <section class="vertical-scrolling">
+    <h2>#5</h2> 
+    <h3>This is the fourth section</h3>
+  </section>
+</div>
+ 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.min.js'></script>
+<script  src="function.js"></script>
+
+<script>
+  VANTA.NET({
+    el: "#marbles",
+    mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x7d7d7d,
+  backgroundColor: 0x0,
+  points: 5.00,
+  maxDistance: 25.00,
+  spacing: 13.00,
+  showDots: true
+  })
+  </script>
+ 
+</body>
