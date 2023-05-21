@@ -1,3 +1,5 @@
+/** General Project Modifications**/
+
 @font-face {
 	font-family: "Playfair";
 	src: url(font/PlayfairDisplay-VariableFont_wght.ttf);
@@ -9,12 +11,20 @@
 }
 
 .project-num h1{
-    color: #ac00a6;
+    color: #bd0aa9;
+    text-shadow: 2px 5px 2px lightgrey;
     font-family: 'Gruppo', serif;
-    position: absolute;
-    font-size: 100px;
+    font-size: 80px;
+    font-family: "Meta";
+    font-weight: 800;
+    font-size: 250px;
 }
 
+.project-num{
+    position: absolute;
+    top: -10%;
+    left: 80%;
+}
 
 .panel__title {
     padding: 15px;
@@ -22,34 +32,29 @@
     font-weight: 800;
     font-size: 70px;
     text-shadow: 2px 2px #2e2e2e;
-    color: #ac00a6;
+    color: #bd0aa9;
     text-align: right;
-    word-spacing: -10;
     text-transform: lowercase;
-}
-
-.panel__title2 {
-    padding: 15px;
-    font-family: 'Righteous', serif;
-    font-weight: 100;
-    font-size: 170px;
-    text-shadow: 2px 2px #dbdbdb;
-    color: #1e1e1e6d;
-    text-align: left;
-    letter-spacing: -100%;
-    text-transform: lowercase;
-    top: 0%;
-    position: absolute;
-    margin: 0;
 }
 
 p{
     font-family: "Meta";
     font-size: 30px;
     color: rgb(0, 0, 0);
+    text-transform: lowercase;
+    font-style: italic;
+}
+
+.panel__context{
+    margin-top: 10px;
+    font-family: "Meta";
+    font-size: 15px;
+    color: rgb(141, 141, 141);
+    text-transform: lowercase;
 }
 
 .panel__role{
+    margin-top: 10px;
     font-family: "Meta";
     font-size: 20px;
     color: rgb(0, 0, 0);
@@ -57,6 +62,7 @@ p{
 }
 
 .panel__desc{
+    margin-top: 10px;
     font-family: "Meta";
     font-size: 15px;
     color: rgb(0, 0, 0);
@@ -72,13 +78,13 @@ p{
     user-select: none;
     pointer-events: none;
     text-align: right;
-    top: 32%;
+    top: 25%;
     left: 7%;
-    
 }
+
 .panel__content {
     position: absolute;
-    top: 26%;
+    top: 25%;
     left: 20%;
     z-index: 2;
     width: 100%;
@@ -127,4 +133,38 @@ p{
     object-fit: contain;
 }
 
-/** Laptop Frame **/
+/** Specific Project 1 Facial Recognition Modifications**/
+
+
+/** Specific Project 2 Dental Clinic Modifications**/
+
+#project_2_title{
+    color: #9500be;
+}
+
+#project_2_num h1{
+    position: absolute;
+    color: #9500be;
+}
+
+#project_2_num{
+    top: -10%;
+}
+
+
+#project_2_extra{
+    position: absolute;
+}
+
+#project_2_extra_col{
+    position: absolute;
+    left: 40%;
+    top: -60%;
+    width: 63vh;
+    height: 35vh;
+    box-shadow: 0px 20px 100.28px 8.72px rgba(12, 12, 12, 0.3);
+}
+
+#project_2_panel{
+    top: 40%;
+}
