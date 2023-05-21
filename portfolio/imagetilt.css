@@ -168,3 +168,27 @@ p{
 #project_2_panel{
     top: 40%;
 }
+
+/** Specific Project 3 Crop Predictor Modifications**/
+
+#project_3_num h1, #project_3_title{
+    color: green;
+}
+
+#project_3_extra{
+    position: absolute;
+}
+
+#project_3_extra_col{
+    position: absolute;
+    left: 0%;
+    top: -50%;
+    width: 38vh;
+    height: 64vh;
+    z-index: 1;
+    box-shadow: 0px 20px 100.28px 8.72px rgba(12, 12, 12, 0.3);
+}
+
+#project_3_panel{
+    top: 40%;
+}
