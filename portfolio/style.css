@@ -254,7 +254,7 @@ h3 {
   
   main {
 	transition: all 0.5s;
-	-webkit-text-stroke: 1px #bebebeac;
+	-webkit-text-stroke: 2px #bebebeac;
 	font-variation-settings: "wght" 900, "ital" 0;
 	font-size: 15rem;
 	text-align: left;
@@ -289,6 +289,15 @@ h3 {
   max-width: 200%;
   margin-top: -10%;
   margin-left: 30%;
+  filter: grayscale(1);
+  transition: 3s ease-in-out;
+}
+
+#marbles:hover{
+	transform: scale(1.5);
+	filter: brightness(1.3);
+	filter: grayscale(0);
+	transition: 3s ease-in-out;
 }
 
 #landing-page-name{
