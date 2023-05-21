@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Gochi";
-    src: url(font/GochiHand-Regular.ttf);
+	font-family: "Gochi";
+	src: url(font/GochiHand-Regular.ttf);
 }
 
 @font-face {
@@ -33,7 +33,7 @@ section {
 }
 
 #section1{
-	background-color: black;
+	background-color: rgb(13, 9, 19);
 }
 
 /** Code By Webdevtrick ( https://webdevtrick.com ) **/
@@ -323,5 +323,3 @@ h3 {
 
 
   /** **/
-
-  

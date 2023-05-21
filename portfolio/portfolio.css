@@ -1,12 +1,12 @@
-img {
+/**img {
     margin-left: 10%;
     margin-top: 10%;
-    /* adjust the below to control the 3D effect */
+    adjust the below to control the 3D effect 
     height: 50vh;
     --x: 10px;
     --y: 20px;
     transform: perspective(1000px) rotateX(var(--_a,40deg));
-    /* */
+
     clip-path: polygon(       
        var(--y)              var(--y),       
        calc(100% - var(--y)) var(--y),       
@@ -27,17 +27,17 @@ img {
   }
 
   
-  /* the below is irrelevant to the 3D effect */
+
   .box {
     cursor: pointer;
     position: absolute;
     top: 10%;
-    left: 5%;
+    left: 55%;
     transition: all 0.8s ease-in-out;
   }
 
   #box2 img{
-    height: 60vh;
+    height: 40vh;
   }
 
   #box2:hover, #box3:hover{
@@ -47,15 +47,19 @@ img {
   }
 
   #box1, #box4{
-    height: 50vh;
     z-index: 1;
-    top: 25%;
-    left: 12%;
-    background-color: rgb(36, 31, 57);
+    top: 10%;
+    left: 5%;
   }
   
   @media (max-width: 900px) {
     body {
       grid-auto-flow: row;   
     }
-  }
+  }**/
+
+  /** texts **/
+
+
+  
+  
