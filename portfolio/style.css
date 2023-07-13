@@ -290,7 +290,7 @@ h3 {
   max-width: 200%;
   margin-top: -10%;
   margin-left: 30%;
-  /**filter: grayscale(1);**/
+  filter: grayscale(1);
   transition: 3s ease-in-out;
 }
 
